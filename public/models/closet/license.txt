@@ -1,0 +1,11 @@
+Model Information:
+* title:	Closet
+* source:	https://sketchfab.com/3d-models/closet-ddde4fccc5554b24b0c57857ecdaaaaa
+* author:	DemonSammy (https://sketchfab.com/demonsammy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Closet" (https://sketchfab.com/3d-models/closet-ddde4fccc5554b24b0c57857ecdaaaaa) by DemonSammy (https://sketchfab.com/demonsammy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

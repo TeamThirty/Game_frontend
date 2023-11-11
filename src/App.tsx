@@ -1,7 +1,13 @@
+import Room from "./Room";
+
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <main className="main">
+      <Room />
+    </main>
+  );
 }
 
 export default App;
