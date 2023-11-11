@@ -1,10 +1,10 @@
-import Room from "./Room";
+import Room from "./components/Room/Room";
 
-import "./App.css";
+import s from "./App.module.css";
 
 function App() {
   return (
-    <main className="main">
+    <main className={s.main}>
       <Room />
     </main>
   );

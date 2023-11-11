@@ -1,14 +1,14 @@
 import { Suspense } from "react";
 
-import { Closet, Bed } from "./models";
+import { Closet, Bed } from "../../models";
 
 import { Canvas } from "@react-three/fiber";
 
-import "./App.css";
+import s from "./room.module.css";
 
 const Room = () => {
   return (
-    <div className="canvas-container">
+    <div className={s.container}>
       <Canvas camera={{ position: [0, 2, 5], zoom: 1.7 }}>
         <ambientLight />
         <Suspense fallback={null}>

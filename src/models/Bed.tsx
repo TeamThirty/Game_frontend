@@ -40,7 +40,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       <group position={[0, 0.006, 0]}>
         <mesh
           geometry={nodes.Object_4.geometry}
-          material={materials.BedFrame}
+          material={new THREE.MeshStandardMaterial({ color: 0x3aa832 })}
         />
         <mesh
           geometry={nodes.Object_5.geometry}
