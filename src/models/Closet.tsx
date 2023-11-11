@@ -8,7 +8,7 @@ Title: Closet
 */
 
 import * as THREE from "three";
-import React, { useRef } from "react";
+import React, { Ref, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -38,7 +38,9 @@ type ContextType = Record<
 >;
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
-  const group = useRef<THREE.Group>();
+  const group = useRef<THREE.Group>() as Ref<
+    THREE.Group<THREE.Object3DEventMap>
+  >;
 
   const model = useColor((state) =>
     state.models.find((model) => model.title === props.name)
@@ -46,7 +48,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials, animations } = useGLTF(
     "models/closet/scene.gltf"
   ) as GLTFResult;
-  const { actions } = useAnimations<GLTFActions>(animations, group);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

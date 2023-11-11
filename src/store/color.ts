@@ -3,9 +3,9 @@ import { create } from "zustand";
 import { ColorResult } from "react-color";
 
 interface Model {
-  id: number;
-  title: string;
-  color: string;
+  id: number | undefined;
+  title: string | undefined;
+  color: string | undefined;
   formatedColor: number;
 }
 
@@ -31,7 +31,8 @@ export const useColor = create<ColorState>((set) => ({
       const updatedModels = state.models.map((model) => {
         if (model.id === state.activeModel?.id) {
           return {
-            ...state.activeModel,
+            id: state.activeModel?.id,
+            title: state.activeModel?.title,
             color: String(color.hex),
             formatedColor: numberColor,
           };
@@ -41,14 +42,15 @@ export const useColor = create<ColorState>((set) => ({
       });
 
       const updatedActiveModel: Model | null = {
-        ...state.activeModel,
+        id: state.activeModel?.id,
+        title: state.activeModel?.title,
         color: String(color.hex),
         formatedColor: numberColor,
       };
 
       return { models: updatedModels, activeModel: updatedActiveModel };
     }),
-  hidePicker: (e) =>
+  hidePicker: () =>
     set((state) => {
       return { isOpen: false };
     }),
