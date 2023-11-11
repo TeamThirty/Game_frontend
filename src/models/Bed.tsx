@@ -12,6 +12,8 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
+import { useColor } from "../store/color";
+
 type GLTFResult = GLTF & {
   nodes: {
     Object_4: THREE.Mesh;
@@ -35,12 +37,19 @@ type ContextType = Record<
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/models/bed/scene.gltf") as GLTFResult;
+  const model = useColor((state) =>
+    state.models.find((model) => model.title === props.name)
+  );
   return (
     <group {...props} dispose={null}>
       <group position={[0, 0.006, 0]}>
         <mesh
           geometry={nodes.Object_4.geometry}
-          material={new THREE.MeshStandardMaterial({ color: 0x3aa832 })}
+          material={
+            new THREE.MeshStandardMaterial({
+              color: model?.formatedColor,
+            })
+          }
         />
         <mesh
           geometry={nodes.Object_5.geometry}

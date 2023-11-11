@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { useColor } from "../../store/color";
 
-import { ChromePicker, ColorResult, ColorChangeHandler } from "react-color";
+import { HuePicker } from "react-color";
 
 const ColorPicker = () => {
-  const [color, changeColor] = useState<string>();
+  const { changeColor, activeModel } = useColor();
 
-  const handleChangeComplete: ColorChangeHandler = (color: ColorResult) => {
-    changeColor(color.hex);
-  };
-  return <ChromePicker onChangeComplete={handleChangeComplete} color={color} />;
+  return <HuePicker onChange={changeColor} color={activeModel?.color} />;
 };
 
 export default ColorPicker;

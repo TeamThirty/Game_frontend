@@ -12,6 +12,8 @@ import React, { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
+import { useColor } from "../store/color";
+
 type GLTFResult = GLTF & {
   nodes: {
     Right_door_closet_text_0: THREE.Mesh;
@@ -37,6 +39,10 @@ type ContextType = Record<
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>();
+
+  const model = useColor((state) =>
+    state.models.find((model) => model.title === props.name)
+  );
   const { nodes, materials, animations } = useGLTF(
     "models/closet/scene.gltf"
   ) as GLTFResult;
@@ -60,28 +66,44 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
                     <mesh
                       name="Right_door_closet_text_0"
                       geometry={nodes.Right_door_closet_text_0.geometry}
-                      material={materials.closet_text}
+                      material={
+                        new THREE.MeshStandardMaterial({
+                          color: model?.formatedColor,
+                        })
+                      }
                     />
                   </group>
                   <group name="Left_door" position={[-4.483, 4.957, -1.942]}>
                     <mesh
                       name="Left_door_closet_text_0"
                       geometry={nodes.Left_door_closet_text_0.geometry}
-                      material={materials.closet_text}
+                      material={
+                        new THREE.MeshStandardMaterial({
+                          color: model?.formatedColor,
+                        })
+                      }
                     />
                   </group>
                   <group name="Top_drawer" position={[-0.033, -3.65, -2.476]}>
                     <mesh
                       name="Top_drawer_closet_text_0"
                       geometry={nodes.Top_drawer_closet_text_0.geometry}
-                      material={materials.closet_text}
+                      material={
+                        new THREE.MeshStandardMaterial({
+                          color: model?.formatedColor,
+                        })
+                      }
                     />
                   </group>
                   <group name="Bottom_drawer" position={[-0.03, -4.59, -2.474]}>
                     <mesh
                       name="Bottom_drawer_closet_text_0"
                       geometry={nodes.Bottom_drawer_closet_text_0.geometry}
-                      material={materials.closet_text}
+                      material={
+                        new THREE.MeshStandardMaterial({
+                          color: model?.formatedColor,
+                        })
+                      }
                     />
                   </group>
                   <group
